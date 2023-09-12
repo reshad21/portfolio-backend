@@ -29,7 +29,6 @@ app.use("/api/v1/blog", articlesRoutes)
 
 
 
-
 app.get('/', (req, res) => {
     res.send('server is running');
 })
