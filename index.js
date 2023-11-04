@@ -25,7 +25,7 @@ connectToServer((err) => {
     }
 });
 
-app.use("/api/v1/blog", articlesRoutes)
+app.use("/api/v1/blog", articlesRoutes)  //http://localhost:5000/api/v1/blog
 
 
 
