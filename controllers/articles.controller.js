@@ -29,16 +29,16 @@ module.exports.deleteArticle = async (req, res, next) => {
     const { id } = req.params;
 
     if (!ObjectId.isValid(id)) {
-      return res.status(400).json({ success: false, error: "Not a valid tool id." });
+      return res.status(400).json({ success: false, error: "Not a valid blog id." });
     }
 
-    const tool = await db.collection("blog").deleteOne({ _id: ObjectId(id) });
+    const blog = await db.collection("blog").deleteOne({ _id: ObjectId(id) });
 
-    if (!tool.deletedCount) {
-      return res.status(400).json({ success: false, error: "Couldn't delete the tool" });
+    if (!blog.deletedCount) {
+      return res.status(400).json({ success: false, error: "Couldn't delete the blog" });
     }
 
-    res.status(200).json({ success: true, message: "Successfully deleted the tool" });
+    res.status(200).json({ success: true, message: "Successfully deleted the blog" });
   } catch (error) {
     next(error);
   }
@@ -51,16 +51,16 @@ module.exports.updateArticle = async (req, res, next) => {
     const { id } = req.params;
 
     if (!ObjectId.isValid(id)) {
-      return res.status(400).json({ success: false, error: "Not a valid tool id." });
+      return res.status(400).json({ success: false, error: "Not a valid blog id." });
     }
 
-    const tool = await db.collection("blog").updateOne({ _id: ObjectId(id) }, { $set: req.body });
+    const blog = await db.collection("blog").updateOne({ _id: ObjectId(id) }, { $set: req.body });
 
-    if (!tool.modifiedCount) {
-      return res.status(400).json({ success: false, error: "Couldn't update the tool" });
+    if (!blog.modifiedCount) {
+      return res.status(400).json({ success: false, error: "Couldn't update the blog" });
     }
 
-    res.status(200).json({ success: true, message: "Successfully updated the tool" });
+    res.status(200).json({ success: true, message: "Successfully updated the blog" });
   } catch (error) {
     next(error);
   }
