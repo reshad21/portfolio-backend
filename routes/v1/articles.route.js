@@ -10,7 +10,7 @@ router
 router
     .route("/:id")
     // .get(articleController.getArticleDetail)
-    // .patch(articleController.updateArticle)
+    .patch(articleController.updateArticle)
     .delete(articleController.deleteArticle)
 
 module.exports = router;
