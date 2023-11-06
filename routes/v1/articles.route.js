@@ -9,7 +9,7 @@ router
 
 router
     .route("/:id")
-    // .get(articleController.getArticleDetail)
+    .get(articleController.getArticleDetail)
     .patch(articleController.updateArticle)
     .delete(articleController.deleteArticle)
 

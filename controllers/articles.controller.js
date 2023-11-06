@@ -12,6 +12,29 @@ module.exports.getAllArticls = async (req, res) => {
   }
 }
 
+
+module.exports.getArticleDetail = async (req, res, next) => {
+  try {
+    const db = getDb();
+    const { id } = req.params;
+
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({ success: false, error: "Not a valid blog id." });
+    }
+
+    const blog = await db.collection("blog").findOne({ _id: ObjectId(id) });
+
+    if (!blog) {
+      return res.status(400).json({ success: false, error: "Couldn't find a blog with this id" });
+    }
+
+    res.status(200).json({ success: true, data: blog });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports.saveArticle = async (req, res, next) => {
   try {
     const db = getDb();
